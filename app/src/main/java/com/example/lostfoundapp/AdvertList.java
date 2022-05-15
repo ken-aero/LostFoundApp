@@ -38,34 +38,37 @@ public class AdvertList extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(AdvertList.this);
 
         List<Advert> advertList = db.getAllAdverts();
-        System.out.print(advertList.get(0).toString());
-        for (Advert advert :advertList)
-        {
-            advertArrayList.add(advert.getDate() + ": " + advert.getName()
-                + "\n" + advert.getDescription()
-            );
-        }
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, advertArrayList);
-        advertListView.setAdapter(adapter);
-
-        advertListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Intent editAdvertIntent = new Intent(getApplicationContext(), AdvertForm.class);
-                editAdvertIntent.putExtra("advert_id", advertList.get(i).getAdvert_id());
-                editAdvertIntent.putExtra("post_type", advertList.get(i).getPost_Type());
-                editAdvertIntent.putExtra("name", advertList.get(i).getName());
-                editAdvertIntent.putExtra("phone", advertList.get(i).getPhone());
-                editAdvertIntent.putExtra("description", advertList.get(i).getDescription());
-                editAdvertIntent.putExtra("date", advertList.get(i).getDate());
-                editAdvertIntent.putExtra("location", advertList.get(i).getLocation());
-
-                startActivityForResult(editAdvertIntent, 1);
-                finish();
+        if (advertList.size() > 0) {
+            for (Advert advert :advertList)
+            {
+                advertArrayList.add(advert.getDate() + ": " + advert.getName()
+                        + "\n" + advert.getDescription()
+                );
             }
-        });
 
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, advertArrayList);
+            advertListView.setAdapter(adapter);
+
+            advertListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    Intent editAdvertIntent = new Intent(getApplicationContext(), AdvertForm.class);
+                    editAdvertIntent.putExtra("advert_id", advertList.get(i).getAdvert_id());
+                    editAdvertIntent.putExtra("post_type", advertList.get(i).getPost_Type());
+                    editAdvertIntent.putExtra("name", advertList.get(i).getName());
+                    editAdvertIntent.putExtra("phone", advertList.get(i).getPhone());
+                    editAdvertIntent.putExtra("description", advertList.get(i).getDescription());
+                    editAdvertIntent.putExtra("date", advertList.get(i).getDate());
+                    editAdvertIntent.putExtra("location", advertList.get(i).getLocation());
+
+                    startActivityForResult(editAdvertIntent, 1);
+                    finish();
+                }
+            });
+        } else {
+            Toast.makeText(AdvertList.this, "No lost and found items!", Toast.LENGTH_LONG).show();
+        }
     }
 }
