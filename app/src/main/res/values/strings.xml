@@ -1,15 +1,14 @@
 <resources>
     <string name="app_name">Lost &amp; Found App</string>
-                <!--    HOME SCREEN     -->
+    <!--    HOME SCREEN     -->
     <string name="createAdvertBtnText">Create A New Advert</string>
     <string name="viewAdvertBtnText">Show All Lost &amp; Found Items</string>
-                <!--    ADVERT FORM     -->
+    <string name="viewMapBtnText">Show On Map</string>
+    <!--    ADVERT FORM     -->
     <string name="postTypeText">Post type:</string>
     <string name="radioLostText">Lost</string>
     <string name="radioFoundText">Found</string>
     <string name="saveAdvertBtnText">Save</string>
-
-
-
-
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="getLocBtnText">Get Location</string>
 </resources>

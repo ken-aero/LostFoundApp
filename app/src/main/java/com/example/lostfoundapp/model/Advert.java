@@ -9,17 +9,38 @@ public class Advert {
     private String description;
     private String date;
     private String location;
+    private String location_lat;
+    private String location_lng;
 
-    public Advert(int post_type, String name, String phone, String description, String date, String location) {
+    public Advert(int post_type, String name, String phone, String description,
+                  String date, String location, String location_lat, String location_lng) {
         this.post_type = post_type;
         this.name = name;
         this.phone = phone;
         this.description = description;
         this.date = date;
         this.location = location;
+        this.location_lat = location_lat;
+        this.location_lng = location_lng;
     }
 
     public Advert() {
+    }
+
+    public String getLocation_lat() {
+        return location_lat;
+    }
+
+    public void setLocation_lat(String location_lat) {
+        this.location_lat = location_lat;
+    }
+
+    public String getLocation_lng() {
+        return location_lng;
+    }
+
+    public void setLocation_lng(String location_lng) {
+        this.location_lng = location_lng;
     }
 
     public int getAdvert_id() {

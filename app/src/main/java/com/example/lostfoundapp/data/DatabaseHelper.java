@@ -31,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + Util.POST_TYPE + " INTEGER, "
                 + Util.NAME + " TEXT," + Util.PHONE + " TEXT, "
                 + Util.DESCRIPTION + " TEXT, " + Util.DATE + " TEXT, "
+                + Util.LOCATION_LAT + " TEXT, " + Util.LOCATION_LNG + " TEXT, "
                 + Util.LOCATION + " TEXT)";
         sqLiteDatabase.execSQL(CREATE_ADVERT_TABLE);
 
@@ -51,6 +52,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(Util.PHONE, advert.getPhone());
         contentValues.put(Util.DESCRIPTION, advert.getDescription());
         contentValues.put(Util.DATE, advert.getDate());
+        contentValues.put(Util.LOCATION_LAT, advert.getLocation_lat());
+        contentValues.put(Util.LOCATION_LNG, advert.getLocation_lng());
         contentValues.put(Util.LOCATION, advert.getLocation());
         long newRowId = db.insert(Util.TABLE_NAME, null, contentValues);
         db.close();
@@ -73,7 +76,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 advert.setPhone(cursor.getString(3));
                 advert.setDescription(cursor.getString(4));
                 advert.setDate(cursor.getString(5));
-                advert.setLocation(cursor.getString(6));
+                advert.setLocation_lat(cursor.getString(6));
+                advert.setLocation_lng(cursor.getString(7));
+                advert.setLocation(cursor.getString(8));
                 advertList.add(advert);
 
             } while (cursor.moveToNext());
