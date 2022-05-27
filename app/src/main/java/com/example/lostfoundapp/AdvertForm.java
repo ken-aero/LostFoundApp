@@ -158,7 +158,7 @@ public class AdvertForm extends AppCompatActivity {
             locationEditText.setVisibility(View.GONE);
 
             // Initialize the SDK for Google Places API
-            Places.initialize(getApplicationContext(), "AIzaSyBtDQiSG6Jk3r81XnZXBKp0Q0H7CjZrk9w");
+            Places.initialize(getApplicationContext(), "PUT_MAPS_API_KEY_HERE");
 
             // Specify the types of place data to return.
             autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS));
